@@ -5,7 +5,7 @@ const controller= require('../controllers/usuariosController');  // Importa as f
 const router = express.Router();
 
 // Rota para criar um novo usuário
-router.post('/usuarios', controller.createUser);
+router.post('/cadastrar', controller.createUser);
 
 // Rota para editar um usuário existente
 router.put('/usuarios/:id', controller.updateUser);  // Usa o ID do usuário na URL

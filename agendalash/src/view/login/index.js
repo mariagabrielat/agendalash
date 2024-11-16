@@ -76,7 +76,8 @@ function Login() {
                 </div>
                 <button type="submit" className="login-button" >Entrar</button>
                 <p className="login-footer">
-                    Esqueceu a senha? <a href="/recuperar">Recuperar</a>
+                    Esqueceu a senha? <a href="/recuperar">Recuperar</a><br/>
+                    Não tem cadastro? <a onClick={() =>navigate('/user')}>Criar Cadastro</a>
                 </p>
             </form>
         </div>

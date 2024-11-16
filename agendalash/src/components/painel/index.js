@@ -7,7 +7,12 @@ function Painel() {
   const [agendamentos, setAgendamentos] = useState([]);
   const [selectedDate, setSelectedDate] = useState('');
   const [userType, setUserType] = useState('');
-  const [servicos, setServicos] = useState(['Alogamento', 'Aparar']); // Estado para armazenar os serviços disponíveis
+  const [servicos, setServicos] = useState([
+                                            'Alogamento R$25,00',
+                                             'Aparar',
+                                             //Colocar os serviços aqui!!
+                                           ]); // Estado para armazenar os serviços disponíveis
+
   const [selectedServico, setSelectedServico] = useState({}); // Serviço selecionado por horário
 
   // Recuperando dados do usuário
@@ -43,11 +48,11 @@ function Painel() {
           Authorization: `Bearer ${token}`
         }
       });
-  
+
       // Filtra os agendamentos para a data selecionada
       const agendamentosDoDia = response.data.filter(agendamento => agendamento.dataAg === date);
       console.log(agendamentosDoDia);
-  
+
       if (agendamentosDoDia.length > 0) {
         // Caso haja agendamentos, busca o nome do cliente e formata a hora
         const agendamentosComNomeCliente = await Promise.all(agendamentosDoDia.map(async (agendamento) => {
@@ -55,7 +60,7 @@ function Painel() {
           const nomeCliente = await fetchNomeCliente(agendamento.id_usuario); // Busca o nome do cliente
           return { ...agendamento, nome_cliente: nomeCliente, hora: horaFormatada };
         }));
-  
+
         setAgendamentos(agendamentosComNomeCliente);
       } else {
         // Se não houver agendamentos, exibe os horários disponíveis
@@ -199,7 +204,7 @@ function Painel() {
                 <tr key={horario}>
                   <td>{horario}</td>
                   {userType === 'admin' && <td>{nomeCliente}</td>}
-                 
+
                   <td>{status}</td>
                   <td>
                     {status === 'Disponível' && (
@@ -222,7 +227,7 @@ function Painel() {
                           {status === 'Disponível' ? 'Agendar' : 'Cancelar'}
                         </button>
                       </td>
-                    
+
                     </>
                   )}
                   {userType === 'cliente' && status === 'Disponível' && (
