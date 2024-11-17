@@ -8,9 +8,11 @@ function Painel() {
   const [selectedDate, setSelectedDate] = useState('');
   const [userType, setUserType] = useState('');
   const [servicos, setServicos] = useState([
-                                            'Alogamento R$25,00',
-                                             'Aparar',
-                                             //Colocar os serviços aqui!!
+                                            'Extensão de Cílios Clássica - R$150,00',
+                                            'Extensão de Cílios Volume Russo - R$250,00',
+                                            'Manutenção - R$70,00',
+                                            'Remoção de Cílios - R$66,00'
+                                              //Colocar os serviços aqui!!
                                            ]); // Estado para armazenar os serviços disponíveis
 
   const [selectedServico, setSelectedServico] = useState({}); // Serviço selecionado por horário
